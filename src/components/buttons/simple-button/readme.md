@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property     | Attribute     | Description                  | Type                              | Default     |
-| ------------ | ------------- | ---------------------------- | --------------------------------- | ----------- |
-| `buttonType` | `button-type` | The html type of the button. | `"button" \| "reset" \| "submit"` | `undefined` |
+| Property                  | Attribute     | Description                  | Type                              | Default     |
+| ------------------------- | ------------- | ---------------------------- | --------------------------------- | ----------- |
+| `buttonType` _(required)_ | `button-type` | The html type of the button. | `"button" \| "reset" \| "submit"` | `undefined` |
 
 
 ----------------------------------------------
