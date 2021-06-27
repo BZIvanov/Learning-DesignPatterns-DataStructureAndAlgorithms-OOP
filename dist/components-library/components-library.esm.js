@@ -1,1 +1,0 @@
-import{p as t,b as p}from"./p-50d4fafa.js";t().then(t=>p([["p-u4733uet",[[1,"my-component",{first:[1],middle:[1],last:[1]}],[1,"simple-button",{buttonType:[1,"button-type"]}]]]],t));
