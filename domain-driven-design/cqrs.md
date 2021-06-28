@@ -6,5 +6,5 @@ Read also [here](https://martinfowler.com/bliki/CQRS.html) for more info and exa
 
 ## More on CQRS
 
-- command - Alter state. Doesnt return data. From CRUD operations command includes CUD operations.
-- query - Doesnt alter state. Returns data. From CRUD operations query includes R operations.
+- command - Alter/modify state (it does something). Doesnt return data/value. From CRUD operations command includes CUD operations.
+- query - Doesnt alter/modify state (it answers a question). Returns data/value. From CRUD operations query includes R operations.
