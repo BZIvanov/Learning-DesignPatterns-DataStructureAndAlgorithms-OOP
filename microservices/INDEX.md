@@ -14,3 +14,7 @@ We can achieve resilience by using the following patterns:
 - circuit breaker design pattern
 - retry design pattern
 - bulkheads design pattern
+
+#### Contract
+
+A microservice can have one or multiple contracts. If it is RESTful contract it will include the resource url, the http verb and data in json format for example. Contract is something like documentation of how we can interact with the microservice.
