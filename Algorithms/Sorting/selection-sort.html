@@ -29,21 +29,20 @@
       }
     </style>
     <meta charset="UTF-8" />
-    <title>Insertion Sort</title>
-    <script src="./insertion-sort.js" defer></script>
+    <title>Selection Sort</title>
+    <script src="./selection-sort.js" defer></script>
   </head>
   <body>
     <div>
       <h3>About</h3>
       <p>
-        The logic of the algorithm is that we assume the first element is
-        already sorted. Then we loop through the next elements in the array one
-        by one. If the previous element is bigger than the next we move all the
-        next elements to the right and put the current item in between.
+        The logic of the algorithm is that we loop through every element and if
+        it is the minimum value we move the value on the left appending it to
+        the previous minimum element we processed.
       </p>
       <p>
-        It is called Insertion sort, because for every current element we insert
-        it between the bigger and the smaller numbers.
+        It is called Selection sort, because everytime we select the minimum
+        value and place it after the previous minimum value we found.
       </p>
     </div>
     <div>
@@ -69,63 +68,62 @@
             <td class="t">initial array</td>
           </tr>
           <tr>
-            <td class="h pr">1</td>
-            <td class="grey">2</td>
+            <td class="h pr">0</td>
+            <td class="red">1</td>
             <td class="grey">8</td>
             <td class="grey">3</td>
-            <td class="grey">1</td>
+            <td class="blue">2</td>
             <td class="grey">5</td>
             <td class="t">
-              we start from index 1, because we assume the first element is
-              already sorted and because 2 &lt; 8 no changes needed
+              we loop through all elements find the smallest and move it to the
+              first position on the first itteration
+            </td>
+          </tr>
+          <tr>
+            <td class="h pr">1</td>
+            <td class="grey">1</td>
+            <td class="red">2</td>
+            <td class="grey">3</td>
+            <td class="blue">8</td>
+            <td class="grey">5</td>
+            <td class="t">
+              for index 1 and higher now the minimum value is 2 so we swap the
+              indexes to move number 2
             </td>
           </tr>
           <tr>
             <td class="h pr">2</td>
-            <td class="grey">2</td>
-            <td class="red">3</td>
-            <td class="blue">8</td>
             <td class="grey">1</td>
+            <td class="grey">2</td>
+            <td class="grey">3</td>
+            <td class="grey">8</td>
             <td class="grey">5</td>
             <td class="t">
-              for index 2 we have 8 &lt; 3 so sorting is needed. We place 3
-              before 8 and move 8 on the right
+              3 is the minimum number, but it was already where it should be so
+              nothing changes here
             </td>
           </tr>
           <tr>
             <td class="h pr">3</td>
-            <td class="red">1</td>
-            <td class="blue">2</td>
-            <td class="blue">3</td>
-            <td class="blue">8</td>
-            <td class="grey">5</td>
-            <td class="t">
-              for index 3 we have 8 &lt; 1 so sorting is needed. We place 1
-              before 8 and move 8 on the right, but 3 &lt; 1 so we also move 3
-              on the right, same for 2
-            </td>
-          </tr>
-          <tr>
-            <td class="h pr">4</td>
             <td class="grey">1</td>
             <td class="grey">2</td>
             <td class="grey">3</td>
             <td class="red">5</td>
             <td class="blue">8</td>
             <td class="t">
-              for index 4 we have 8 &lt; 5 so sorting is needed. We place 5
-              before 8 and move 8 on the right
+              for the 3rd index now we swap 5 with 8 and finish the loop without
+              the 4th index, because by now there we have the biggest number
             </td>
           </tr>
           <tr>
             <td colspan="7" class="blue t">
-              entries in blue move to the right
+              entries in blue swap position with the smallest number
             </td>
           </tr>
           <tr>
             <td colspan="7" class="red t">
-              entries in red is the current number we move before the bigger
-              numbers
+              entries in red is the smallest number for the current itteration
+              and we place it after the previous smallest number
             </td>
           </tr>
           <tr>

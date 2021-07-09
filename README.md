@@ -2,4 +2,5 @@
 
 #### Sorting algorithms
 
+- selection sort
 - insertion sort

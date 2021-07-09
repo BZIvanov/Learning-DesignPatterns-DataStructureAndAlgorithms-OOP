@@ -9,9 +9,11 @@ function insertionSort(arr) {
     }
 
     arr[j + 1] = current;
+
+    console.log(`Arr after itteration ${i} is ${arr}`);
   }
 
   return arr;
 }
 
-console.log(insertionSort([2, 8, 3, 1, 5]));
+console.log(`Final result: ${insertionSort([2, 8, 3, 1, 5])}`);
