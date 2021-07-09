@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      td {
+        padding: 3px 7px;
+      }
+      .h {
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+      .pb {
+        border-bottom: 1px solid black;
+      }
+      .pr {
+        border-right: 1px solid black;
+      }
+      .t {
+        font-size: 0.9rem;
+      }
+      .blue {
+        color: blue;
+      }
+      .grey {
+        color: darkgray;
+      }
+      .red {
+        color: red;
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <title>Insertion Sort</title>
+    <script src="./insertion-sort.js" defer></script>
+  </head>
+  <body>
+    <div>
+      <h3>About</h3>
+      <p>
+        The logic of the algorithm is that we assume the first element is
+        already sorted. Then we loop through the next elements in the array one
+        by one. If the previous element is bigger than the next we move all the
+        next elements to the right and put the current item in between.
+      </p>
+    </div>
+    <div>
+      <table>
+        <tbody>
+          <tr>
+            <td class="h">i</td>
+            <td class="h">0</td>
+            <td class="h">1</td>
+            <td class="h">2</td>
+            <td class="h">3</td>
+            <td class="h">4</td>
+            <td class="t">here are the indexes of the array</td>
+          </tr>
+          <tr>
+            <td class="h"></td>
+            <td class="h pb">2</td>
+            <td class="h pb">8</td>
+            <td class="h pb">3</td>
+            <td class="h pb">1</td>
+            <td class="h pb">5</td>
+            <td class="t">initial array</td>
+          </tr>
+          <tr>
+            <td class="h pr">1</td>
+            <td class="grey">2</td>
+            <td class="grey">8</td>
+            <td class="grey">3</td>
+            <td class="grey">1</td>
+            <td class="grey">5</td>
+            <td class="t">
+              we start from index 1, because we assume the first element is
+              already sorted and because 2 &lt; 8 no changes needed
+            </td>
+          </tr>
+          <tr>
+            <td class="h pr">2</td>
+            <td class="grey">2</td>
+            <td class="red">3</td>
+            <td class="blue">8</td>
+            <td class="grey">1</td>
+            <td class="grey">5</td>
+            <td class="t">
+              for index 2 we have 8 &lt; 3 so sorting is needed. We place 3
+              before 8 and move 8 on the right
+            </td>
+          </tr>
+          <tr>
+            <td class="h pr">3</td>
+            <td class="red">1</td>
+            <td class="blue">2</td>
+            <td class="blue">3</td>
+            <td class="blue">8</td>
+            <td class="grey">5</td>
+            <td class="t">
+              for index 3 we have 8 &lt; 1 so sorting is needed. We place 1
+              before 8 and move 8 on the right, but 3 &lt; 1 so we also move 3
+              on the right, same for 2
+            </td>
+          </tr>
+          <tr>
+            <td class="h pr">4</td>
+            <td class="grey">1</td>
+            <td class="grey">2</td>
+            <td class="grey">3</td>
+            <td class="red">5</td>
+            <td class="blue">8</td>
+            <td class="t">
+              for index 4 we have 8 &lt; 5 so sorting is needed. We place 5
+              before 8 and move 8 on the right
+            </td>
+          </tr>
+          <tr>
+            <td colspan="7" class="blue t">
+              entries in blue move to the right
+            </td>
+          </tr>
+          <tr>
+            <td colspan="7" class="red t">
+              entries in red is the current number we move before the bigger
+              numbers
+            </td>
+          </tr>
+          <tr>
+            <td colspan="7" class="grey t">
+              entries in grey are unchanged positions
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h3>Test /debug</h3>
+      <p>
+        To test it in the browser open the developer tools, go to the
+        <b>Sources</b> tab and debug the code.
+      </p>
+    </div>
+  </body>
+</html>
