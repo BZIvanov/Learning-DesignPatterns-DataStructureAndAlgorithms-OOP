@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      td {
+        padding: 5px 9px;
+        margin: 22px;
+      }
+      .h {
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+      .pb {
+        border-bottom: 1px solid black;
+      }
+      .t {
+        font-size: 0.9rem;
+      }
+      .ia {
+        color: coral;
+      }
+      .left {
+        box-shadow: inset 2px 2px 0 0 coral, inset 0 -2px 0 0 coral;
+      }
+      .mid {
+        box-shadow: inset 0 2px 0 0 coral, inset 0 -2px 0 0 coral;
+      }
+      .right {
+        box-shadow: inset -2px -2px 0 0 coral, inset 0 2px 0 0 coral;
+      }
+      .full {
+        box-shadow: inset -2px -2px 0 0 coral, inset 2px 2px 0 0 coral;
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <title>Quick Sort</title>
+    <script src="./quick-sort.js" defer></script>
+  </head>
+  <body>
+    <div>
+      <h3>About</h3>
+      <p>
+        The logic of the algorithm is that we split the array and then we split
+        the already splitted arrays until we have many arrays with only 1
+        element. And then we sort the single elements arrays and merging them
+        back to 1 array.
+      </p>
+      <p>
+        It is called Merge sort, because we merge all the single elements arrays
+        into one sorted array.
+      </p>
+    </div>
+    <div>
+      <h3>Visualization of the algorithm</h3>
+      <table>
+        <tbody>
+          <tr>
+            <td class="h pb ia">2</td>
+            <td class="h pb ia">8</td>
+            <td class="h pb ia">7</td>
+            <td class="h pb ia">4</td>
+            <td class="h pb ia">3</td>
+            <td class="h pb ia">1</td>
+            <td class="h pb ia">5</td>
+            <td class="t">initial array</td>
+          </tr>
+          <tr>
+            <td class="left">2</td>
+            <td class="mid">8</td>
+            <td class="right">7</td>
+            <td class="left">4</td>
+            <td class="mid">3</td>
+            <td class="mid">1</td>
+            <td class="right">5</td>
+            <td class="t">we split the initial array in two arrays</td>
+          </tr>
+          <tr>
+            <td class="full">2</td>
+            <td class="left">8</td>
+            <td class="right">7</td>
+            <td class="left">4</td>
+            <td class="right">3</td>
+            <td class="left">1</td>
+            <td class="right">5</td>
+            <td class="t">
+              we keep splitting the splitted arrays until we have only arrays
+              with 1 element
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td class="full">8</td>
+            <td class="full">7</td>
+            <td class="full">4</td>
+            <td class="full">3</td>
+            <td class="full">1</td>
+            <td class="full">5</td>
+            <td class="t">
+              now we have all numbers as arrays with 1 element. Here we don't
+              have the number 2 because the recursion is returning for arrays
+              with 1 element and we don't have recursion call here
+            </td>
+          </tr>
+          <tr>
+            <td class="full">2</td>
+            <td class="left">7</td>
+            <td class="right">8</td>
+            <td class="left">3</td>
+            <td class="right">4</td>
+            <td class="left">1</td>
+            <td class="right">5</td>
+            <td class="t">
+              now we start merging to the top of the recursion, that is why we
+              first merge 7 and 8 before merge with 2
+            </td>
+          </tr>
+          <tr>
+            <td class="left">2</td>
+            <td class="mid">7</td>
+            <td class="right">8</td>
+            <td class="left">1</td>
+            <td class="mid">3</td>
+            <td class="mid">4</td>
+            <td class="right">5</td>
+            <td class="t">
+              here we merge again the previous arrays from the recursion
+            </td>
+          </tr>
+          <tr>
+            <td class="left">1</td>
+            <td class="mid">2</td>
+            <td class="mid">3</td>
+            <td class="mid">4</td>
+            <td class="mid">5</td>
+            <td class="mid">7</td>
+            <td class="right">8</td>
+            <td class="t">and now we have the final result</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h3>Test /debug</h3>
+      <p>
+        To test it in the browser open the developer tools, go to the
+        <b>Sources</b> tab and debug the code.
+      </p>
+    </div>
+  </body>
+</html>
