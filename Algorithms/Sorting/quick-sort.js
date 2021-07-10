@@ -1,5 +1,5 @@
 const quickSort = (arr) => {
-  console.log('ARR', arr);
+  console.log('Incoming', arr);
   if (arr.length <= 1) {
     return arr;
   }
@@ -16,7 +16,9 @@ const quickSort = (arr) => {
     }
   }
 
-  return [...quickSort(smallers), pivot, ...quickSort(biggers)];
+  const result = [...quickSort(smallers), pivot, ...quickSort(biggers)];
+  console.log('----->', result);
+  return result;
 };
 
 console.log(quickSort([2, 8, 7, 4, 3, 1, 5]));

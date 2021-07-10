@@ -31,6 +31,11 @@
       .full {
         box-shadow: inset -2px -2px 0 0 coral, inset 2px 2px 0 0 coral;
       }
+      .pivot {
+        color: blueviolet;
+        font-weight: bold;
+        font-size: 1.1rem;
+      }
     </style>
     <meta charset="UTF-8" />
     <title>Quick Sort</title>
@@ -40,14 +45,14 @@
     <div>
       <h3>About</h3>
       <p>
-        The logic of the algorithm is that we split the array and then we split
-        the already splitted arrays until we have many arrays with only 1
-        element. And then we sort the single elements arrays and merging them
-        back to 1 array.
+        The logic of the algorithm is that we use the last element of the array
+        (the pivot) and create array with smaller numbers than the pivot and do
+        the same for bigger numbers. Once we split everything except the pivot
+        as arrays with 1 element we return the 1-element arrays concatenated
+        with the pivot at resepctive positions.
       </p>
       <p>
-        It is called Merge sort, because we merge all the single elements arrays
-        into one sorted array.
+        It is called Quick sort, it works quick based on multiple conditions.
       </p>
     </div>
     <div>
@@ -66,65 +71,70 @@
           </tr>
           <tr>
             <td class="left">2</td>
-            <td class="mid">8</td>
-            <td class="right">7</td>
-            <td class="left">4</td>
+            <td class="mid">4</td>
             <td class="mid">3</td>
-            <td class="mid">1</td>
-            <td class="right">5</td>
-            <td class="t">we split the initial array in two arrays</td>
-          </tr>
-          <tr>
-            <td class="full">2</td>
+            <td class="right">1</td>
+            <td class="pivot">5</td>
             <td class="left">8</td>
             <td class="right">7</td>
-            <td class="left">4</td>
-            <td class="right">3</td>
-            <td class="left">1</td>
-            <td class="right">5</td>
             <td class="t">
-              we keep splitting the splitted arrays until we have only arrays
-              with 1 element
+              we take as pivot the most right number and move smaller number on
+              left and bigger numbers on right
+            </td>
+          </tr>
+          <tr>
+            <td class="pivot">1</td>
+            <td class="left">2</td>
+            <td class="mid">4</td>
+            <td class="right">3</td>
+            <td></td>
+            <td class="pivot">7</td>
+            <td class="full">8</td>
+            <td class="t">
+              with the recursion for the smaller array (left one) from the above
+              row we again take as pivot the most left number which is 1 and
+              move all others in the bigger array, because they are all bigger
+              than 1. With the recursion we do the same for the bigger numbers
+              array from the above row, where the pivot is 7
             </td>
           </tr>
           <tr>
             <td></td>
-            <td class="full">8</td>
-            <td class="full">7</td>
+            <td class="full">2</td>
+            <td class="pivot">3</td>
             <td class="full">4</td>
-            <td class="full">3</td>
-            <td class="full">1</td>
-            <td class="full">5</td>
+            <td></td>
+            <td></td>
+            <td></td>
             <td class="t">
-              now we have all numbers as arrays with 1 element. Here we don't
-              have the number 2 because the recursion is returning for arrays
-              with 1 element and we don't have recursion call here
+              we keep doing the same with recursion and 3 is now the pivot. For
+              7 as pivot from the above row recursion completed, because now we
+              have only the pivot and 1-element array
             </td>
           </tr>
           <tr>
-            <td class="full">2</td>
+            <td></td>
+            <td class="left">2</td>
+            <td class="mid">3</td>
+            <td class="right">4</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="t">
+              here the recursion also completed, because we ended up with the
+              pivot only and 1-element arrays and now we climbing back the
+              recursion stack
+            </td>
+          </tr>
+          <tr>
+            <td class="left">1</td>
+            <td class="mid">2</td>
+            <td class="mid">3</td>
+            <td class="right">4</td>
+            <td></td>
             <td class="left">7</td>
             <td class="right">8</td>
-            <td class="left">3</td>
-            <td class="right">4</td>
-            <td class="left">1</td>
-            <td class="right">5</td>
-            <td class="t">
-              now we start merging to the top of the recursion, that is why we
-              first merge 7 and 8 before merge with 2
-            </td>
-          </tr>
-          <tr>
-            <td class="left">2</td>
-            <td class="mid">7</td>
-            <td class="right">8</td>
-            <td class="left">1</td>
-            <td class="mid">3</td>
-            <td class="mid">4</td>
-            <td class="right">5</td>
-            <td class="t">
-              here we merge again the previous arrays from the recursion
-            </td>
+            <td class="t">here we keep climbing the recursion stack</td>
           </tr>
           <tr>
             <td class="left">1</td>
