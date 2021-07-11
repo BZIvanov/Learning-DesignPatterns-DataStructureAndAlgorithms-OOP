@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      td {
+        padding: 5px 9px;
+        margin: 22px;
+      }
+      .h {
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+      .pb {
+        border-bottom: 1px solid black;
+      }
+      .t {
+        font-size: 0.9rem;
+      }
+      .ia {
+        color: coral;
+      }
+      .full {
+        box-shadow: inset -2px -2px 0 0 coral, inset 2px 2px 0 0 coral;
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <title>Binary Search</title>
+    <script src="./binary-search.js" defer></script>
+  </head>
+  <body>
+    <div>
+      <h3>About</h3>
+      <p>Keynotes about the binary search algorithm:</p>
+      <ul>
+        <li>It uses the divide and conquer method.</li>
+        <li>It is only working for sorted collections.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Visualization of the algorithm</h3>
+      <table>
+        <tbody>
+          <tr>
+            <td class="h pb">1</td>
+            <td class="h pb">3</td>
+            <td class="h pb">4</td>
+            <td class="h pb">5</td>
+            <td class="h pb ia">9</td>
+            <td class="h pb">23</td>
+            <td class="h pb">48</td>
+            <td class="h pb">51</td>
+            <td class="h pb">59</td>
+            <td class="h pb">83</td>
+            <td class="h pb">91</td>
+            <td class="t">
+              this is our initial array and the number we will search for is 9
+            </td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>9</td>
+            <td class="full">23</td>
+            <td>48</td>
+            <td>51</td>
+            <td>59</td>
+            <td>83</td>
+            <td>91</td>
+            <td class="t">
+              the middle of the array is index 5, but there is not the number we
+              search for and the searching number is smaller than 23 so we
+              proceed with the left side of the array
+            </td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>3</td>
+            <td class="full">4</td>
+            <td>5</td>
+            <td>9</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="t">
+              we again start in the middle and there we don't find the searched
+              number and the searched number is bigger than 4 (the middle
+              number) so we proceed with the right part of the subarray
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="full">5</td>
+            <td>9</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="t">
+              the middle index in 2-elements array for us is the left element,
+              but that is not the number we search for so we proceed again with
+              the right part
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="full">9</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="t">
+              this is the only element that is left and it is the number we
+              search for so we return the number on index 4 in the initial array
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h3>Complexity</h3>
+      <p>
+        Space complexity is 0(1), because we don't create additional arrays, we
+        operate on the initial one.
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>Time complexity</th>
+            <th>Space complexity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>0(log(n))</td>
+            <td>0(1)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h3>Test /debug</h3>
+      <p>
+        To test it in the browser open the developer tools, go to the
+        <b>Sources</b> tab and debug the code.
+      </p>
+    </div>
+  </body>
+</html>
