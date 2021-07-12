@@ -2,9 +2,12 @@
 <html lang="en">
   <head>
     <style>
-      table, th, td {
+      table,
+      th,
+      td {
         border-collapse: collapse;
         border: 1px solid black;
+        padding: 3px;
       }
     </style>
     <meta charset="UTF-8" />
@@ -25,10 +28,14 @@
       </p>
     </div>
     <div>
+      <canvas id="canvas"></canvas>
+    </div>
+    <div>
       <h3>Complexity</h3>
       <table>
         <thead>
           <tr>
+            <th>Type</th>
             <th>Time complexity to find adjacent nodes</th>
             <th>Time complexity to check if 2 nodes are connected</th>
             <th>Space complexity</th>
@@ -36,13 +43,82 @@
         </thead>
         <tbody>
           <tr>
+            <td>With nodes pairs as arrays (option 1 in the script)</td>
             <td><em>O(e)</em> where <em>e</em> is the number of edges</td>
             <td><em>O(e)</em></td>
             <td><em>O(v + e)</em></td>
+          </tr>
+          <tr>
+            <td>Adjancency Matrix (option 2 in the script)</td>
+            <td><em>O(n)</em> where <em>n</em> is the number of nodes</td>
+            <td><em>O(1)</em></td>
+            <td>
+              <em
+                >O(n^2) because for every node with add 1 more row and
+                column</em
+              >
+            </td>
           </tr>
         </tbody>
       </table>
     </div>
     <div>
+      <h3>Code</h3>
+      <p>
+        In the script file you can find 3 types of implementations (Array with
+        pairs, Adjancecy Matrix and Adjency List).
+      </p>
+    </div>
+    <script>
+      function drawCircle(ctx, x, y) {
+        const radian = Math.PI / 180;
+
+        ctx.beginPath();
+        ctx.arc(x, y, 25, 0 * radian, 360 * radian, false);
+        ctx.stroke();
+      }
+
+      function drawText(ctx, text, x, y) {
+        ctx.fillText(text, x, y);
+      }
+
+      function drawLine(ctx, x1, y1, x2, y2) {
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.stroke();
+      }
+
+      window.onload = function () {
+        const cv = document.getElementById('canvas');
+        const ctx = cv.getContext('2d');
+        cv.width = 600;
+        cv.height = 240;
+
+        const radian = Math.PI / 180;
+        ctx.strokeStyle = 'blue';
+        ctx.lineWidth = 2;
+        drawCircle(ctx, 40, 40);
+        drawCircle(ctx, 200, 40);
+        drawCircle(ctx, 120, 120);
+        drawCircle(ctx, 40, 200);
+        drawCircle(ctx, 200, 200);
+
+        ctx.font = '20px Verdana';
+        drawText(ctx, 'A', 34, 46);
+        drawText(ctx, 'B', 192, 46);
+        drawText(ctx, 'C', 112, 128);
+        drawText(ctx, 'D', 34, 208);
+        drawText(ctx, 'E', 192, 208);
+
+        ctx.strokeStyle = 'red';
+        drawLine(ctx, 65, 40, 175, 40);
+        drawLine(ctx, 40, 65, 40, 175);
+        drawLine(ctx, 55, 180, 105, 140);
+        drawLine(ctx, 140, 105, 185, 60);
+        drawLine(ctx, 140, 135, 185, 180);
+        drawLine(ctx, 65, 200, 175, 200);
+      };
+    </script>
   </body>
 </html>
