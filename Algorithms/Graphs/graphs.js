@@ -65,3 +65,61 @@ function isConnected2(firstNode, secondNode) {
   return adjacentMatrix[rowIdx][colIdx] === 1;
 }
 console.log('Is B connected with C: ', isConnected2('B', 'C'));
+
+// OPTION 3 - setup the connections with lists
+console.log('---NODES AS LIST---');
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.edgesList = [];
+  }
+
+  connect(node) {
+    this.edgesList.push(node);
+    node.edgesList.push(this);
+  }
+
+  get adjacentNodes() {
+    return this.edgesList.map((edge) => edge.value);
+  }
+
+  isConnectedTo(node) {
+    return this.edgesList.map((edge) => edge.value).indexOf(node.value) > -1;
+  }
+}
+
+class Graph {
+  constructor() {
+    this.nodes = [];
+  }
+
+  addNode(node) {
+    this.nodes.push(node);
+  }
+}
+
+const nodeA = new Node('A');
+const nodeB = new Node('B');
+const nodeC = new Node('C');
+const nodeD = new Node('D');
+const nodeE = new Node('E');
+
+const graph = new Graph();
+graph.addNode(nodeA);
+graph.addNode(nodeB);
+graph.addNode(nodeC);
+graph.addNode(nodeD);
+graph.addNode(nodeE);
+
+nodeA.connect(nodeB);
+nodeA.connect(nodeD);
+nodeB.connect(nodeC);
+nodeC.connect(nodeD);
+nodeC.connect(nodeE);
+nodeD.connect(nodeE);
+
+console.log('Graph: ', graph);
+
+console.log('Adjacent nodes of A: ', nodeA.adjacentNodes);
+
+console.log('Is B connected with C: ', nodeB.isConnectedTo(nodeC));
