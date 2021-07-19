@@ -13,15 +13,15 @@
 Example for object's property, method and members:
 
 ```javascript
-// width, height and calcVolume are members of square
+// width, height and calcArea are members of square
 const square = {
   width: 10, // width is a property of square
   height: 10, // height is a property of square
-  // calcVolume is a method of square
-  calcVolume() {
+  // calcArea is a method of square
+  calcArea() {
     return this.width * this.height;
   },
 };
 
-console.log(square.calcVolume());
+console.log(square.calcArea());
 ```
