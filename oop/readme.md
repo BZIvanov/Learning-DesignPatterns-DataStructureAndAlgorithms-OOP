@@ -4,9 +4,9 @@
 
 - **encapsulation** - Enclosing all functionalities of an object (data and methods) within the object, so the objects internal work is hidden from the rest of our application. The main benefit from encapsulation is that it governs the creation of our objects.
 
-- **abstraction**
+- **abstraction** - Shows only essentials and hides unnecessary information.
 
-- **polymorphism**
+- **polymorphism** - ability of an object to take many forms.
 
 ## Objects
 
