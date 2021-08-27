@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      canvas {
+        border: 1px solid black;
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <title>Graphs</title>
+    <script src="./directed-vs-undirected.js"></script>
+  </head>
+  <body>
+    <div>
+      <div>
+        <h3>Directed and Undirected Graphs</h3>
+        <h4>Common</h4>
+        <ul>
+          <li>nodes B and C are <b>neighbors</b> to node A</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Directed Graph</h4>
+        <ul>
+          <li>
+            if we are on node C we can go to node E, but we can't go back to
+            node A
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h4>Undirected Graph</h4>
+        <ul>
+          <li>if we are on node C we can go to both nodes A and E</li>
+        </ul>
+      </div>
+      <div>
+        <canvas id="directed"></canvas>
+        <canvas id="undirected"></canvas>
+      </div>
+    </div>
+    <script>
+      const circleRadius = 20;
+      const paddingSize = () => circleRadius * 3;
+      const circleSize = (n = 1) => circleRadius * 2 * n + paddingSize();
+      const lineSize = (n = 1) => circleRadius * 5 * n;
+      const pair = (n = 1) => circleSize(n) + lineSize(n);
+
+      function drawCircle(ctx, x, y) {
+        const radian = Math.PI / 180;
+
+        ctx.beginPath();
+        ctx.arc(x, y, circleRadius, 0 * radian, 360 * radian, false);
+        ctx.stroke();
+      }
+
+      function drawText(ctx, text, x, y) {
+        ctx.fillText(text, x, y);
+      }
+
+      function drawLine(ctx, x1, y1, x2, y2, directed) {
+        if (directed) {
+          const headlen = circleRadius / 4;
+          const dx = x2 - x1;
+          const dy = y2 - y1;
+          const angle = Math.atan2(dy, dx);
+          ctx.beginPath();
+          ctx.moveTo(x1, y1);
+          ctx.lineTo(x2, y2);
+          ctx.lineTo(
+            x2 - headlen * Math.cos(angle - Math.PI / 6),
+            y2 - headlen * Math.sin(angle - Math.PI / 6)
+          );
+          ctx.moveTo(x2, y2);
+          ctx.lineTo(
+            x2 - headlen * Math.cos(angle + Math.PI / 6),
+            y2 - headlen * Math.sin(angle + Math.PI / 6)
+          );
+          ctx.stroke();
+        } else {
+          ctx.beginPath();
+          ctx.moveTo(x1, y1);
+          ctx.lineTo(x2, y2);
+          ctx.stroke();
+        }
+      }
+
+      function drawGraph(ctx, isDirected) {
+        ctx.font = '16px Verdana';
+        drawText(
+          ctx,
+          isDirected ? 'Directed Graph' : 'Undirected Graph',
+          paddingSize(),
+          paddingSize() / 2
+        );
+
+        ctx.strokeStyle = 'blue';
+        ctx.lineWidth = 2;
+        drawCircle(ctx, paddingSize(), paddingSize());
+        drawCircle(ctx, pair(), paddingSize());
+        drawCircle(ctx, paddingSize(), pair());
+        drawCircle(ctx, pair(), pair());
+        drawCircle(ctx, paddingSize(), pair(2));
+        drawCircle(ctx, pair(), pair(2));
+
+        drawText(ctx, 'A', paddingSize() - 5, paddingSize() + 5);
+        drawText(ctx, 'C', pair() - 5, paddingSize() + 5);
+        drawText(ctx, 'B', paddingSize() - 5, pair() + 5);
+        drawText(ctx, 'E', pair() - 5, pair() + 5);
+        drawText(ctx, 'D', paddingSize() - 5, pair(2) + 5);
+        drawText(ctx, 'F', pair() - 5, pair(2) + 5);
+
+        ctx.strokeStyle = 'red';
+        ctx.lineCap = 'round';
+        drawLine(
+          ctx,
+          paddingSize() + circleRadius,
+          paddingSize(),
+          pair() - circleRadius,
+          paddingSize(),
+          isDirected
+        );
+        drawLine(
+          ctx,
+          paddingSize(),
+          paddingSize() + circleRadius,
+          paddingSize(),
+          pair() - circleRadius,
+          isDirected
+        );
+        drawLine(
+          ctx,
+          pair(),
+          paddingSize() + circleRadius,
+          pair(),
+          pair() - circleRadius,
+          isDirected
+        );
+        drawLine(
+          ctx,
+          pair() - circleRadius,
+          pair(),
+          paddingSize() + circleRadius,
+          pair(),
+          isDirected
+        );
+        drawLine(
+          ctx,
+          paddingSize(),
+          pair() + circleRadius,
+          paddingSize(),
+          pair(2) - circleRadius,
+          isDirected
+        );
+        drawLine(
+          ctx,
+          pair() - circleRadius,
+          pair(2),
+          paddingSize() + circleRadius,
+          pair(2),
+          isDirected
+        );
+      }
+
+      window.onload = function () {
+        const directed = document.getElementById('directed');
+        const undirected = document.getElementById('undirected');
+        const ctxD = directed.getContext('2d');
+        const ctxU = undirected.getContext('2d');
+        directed.width = 300;
+        directed.height = 400;
+        undirected.width = 300;
+        undirected.height = 400;
+
+        drawGraph(ctxD, true);
+        drawGraph(ctxU, false);
+      };
+    </script>
+  </body>
+</html>
