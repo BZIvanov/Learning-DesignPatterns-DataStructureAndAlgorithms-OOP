@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      canvas {
+        border: 1px solid black;
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <title>Depth First Traversal</title>
+    <script src="./breadth-first-traversal.js"></script>
+  </head>
+  <body>
+    <div>
+      <div>
+        <h3>Depth First Traversal</h3>
+      </div>
+      <div>
+        <p>Steps</p>
+        <ul>
+          <li>
+            Step1 - we decide to take node A as a starting point. We have two
+            options next, nodes B and C. We go to both next.
+          </li>
+          <li>Step2 - first we decide to go node B and then node C</li>
+          <li>
+            Step3 - from node B we will continue to node D, which is the only
+            option. And from node C we will continue to node E which is also the
+            only option
+          </li>
+          <li>There are no more nodes to go to.</li>
+        </ul>
+      </div>
+      <div>
+        <canvas id="example"></canvas>
+      </div>
+      <div>
+        <p>Pattern</p>
+        <ul>
+          <li>We choose to start at 4:5.</li>
+          <li>On step 2 we cover all surrounding nodes</li>
+          <li>On step 3 we also cover all surrounding nodes</li>
+          <li>The rest of the steps follow this pattern</li>
+        </ul>
+      </div>
+      <div>
+        <canvas id="pattern"></canvas>
+      </div>
+    </div>
+    <script>
+      function drawLine(ctx, x1, y1, x2, y2) {
+        const headlen = 5;
+        const dx = x2 - x1;
+        const dy = y2 - y1;
+        const angle = Math.atan2(dy, dx);
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.lineTo(
+          x2 - headlen * Math.cos(angle - Math.PI / 6),
+          y2 - headlen * Math.sin(angle - Math.PI / 6)
+        );
+        ctx.moveTo(x2, y2);
+        ctx.lineTo(
+          x2 - headlen * Math.cos(angle + Math.PI / 6),
+          y2 - headlen * Math.sin(angle + Math.PI / 6)
+        );
+        ctx.stroke();
+      }
+
+      function drawGraph(ctx) {
+        // h - horizontal; r - right, l - left
+        // v - vertical; t - top, b - bottom
+        const dots = {
+          '1 1': { text: 'A', info: 'Step1', color: 150, edges: ['hr', 'vb'] },
+          '1 2': { text: 'C', info: 'Step2', color: 150, edges: ['vb'] },
+          '2 1': { text: 'B', info: 'Step2', color: 150, edges: ['vb'] },
+          '2 2': { text: 'E', info: 'Step3', color: 150, edges: ['hl'] },
+          '3 1': { text: 'D', info: 'Step3', color: 150, edges: null },
+          '3 2': { text: 'F', info: '', color: 255, edges: ['hl'] },
+        };
+
+        const spacing = 120;
+        const radian = Math.PI / 180;
+        const radius = 20;
+
+        for (let i = 1; i <= 2; i++) {
+          for (let j = 1; j <= 3; j++) {
+            const dot = dots[`${j} ${i}`];
+
+            // draw circles
+            ctx.strokeStyle = 'blue';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.arc(
+              i * spacing,
+              j * spacing,
+              radius,
+              0 * radian,
+              360 * radian,
+              false
+            );
+            ctx.fillStyle = `rgba(${dot.color}, ${dot.color}, ${dot.color}, 0.5)`;
+            ctx.fill();
+            ctx.stroke();
+
+            // draw lines
+            ctx.strokeStyle = 'red';
+            if (dot.edges) {
+              const headlen = 5;
+
+              dot.edges.forEach((edge) => {
+                let x1, y1, x2, y2;
+                if (edge === 'hr') {
+                  x1 = i * spacing + radius;
+                  y1 = j * spacing;
+                  x2 = i * spacing + radius + (spacing - radius * 2) - 3;
+                  y2 = j * spacing - 1;
+                  drawLine(ctx, x1, y1, x2, y2);
+                } else if (edge === 'hl') {
+                  x1 = (i - 1) * spacing + radius + (spacing - radius * 2);
+                  y1 = j * spacing;
+                  x2 = (i - 1) * spacing + radius + 3;
+                  y2 = j * spacing - 1;
+                  drawLine(ctx, x1, y1, x2, y2);
+                } else if (edge === 'vt') {
+                  x1 = i * spacing;
+                  y1 = j * spacing + radius + (spacing - radius * 2);
+                  x2 = i * spacing + 1;
+                  y2 = j * spacing + radius + 3;
+                  drawLine(ctx, x1, y1, x2, y2);
+                } else if (edge === 'vb') {
+                  x1 = i * spacing;
+                  y1 = j * spacing + radius;
+                  x2 = i * spacing + 1;
+                  y2 = j * spacing + radius + (spacing - radius * 2) - 3;
+                  drawLine(ctx, x1, y1, x2, y2);
+                }
+              });
+            }
+
+            // draw texts
+            ctx.font = '16px Verdana';
+            ctx.fillStyle = 'black';
+            ctx.fillText('Collected nodes and order: A, B, C, D, E', 40, 450);
+
+            ctx.fillText(`${dot.text}`, i * spacing - 5, j * spacing + 5);
+
+            ctx.font = '12px Verdana';
+            ctx.fillText(`${dot.info}`, i * spacing + 10, j * spacing - 25);
+          }
+        }
+      }
+
+      function drawPattern(ctx) {
+        const dots = {
+          '4 5': { text: 'START HERE' },
+          '3 5': { text: 'step2' },
+          '4 6': { text: 'step2' },
+          '5 5': { text: 'step2' },
+          '4 4': { text: 'step2' },
+          '3 4': { text: 'step3' },
+          '2 5': { text: 'step3' },
+          '3 6': { text: 'step3' },
+          '4 7': { text: 'step3' },
+          '5 6': { text: 'step3' },
+          '6 5': { text: 'step3' },
+          '5 4': { text: 'step3' },
+          '4 3': { text: 'step3' },
+        };
+
+        const size = 8;
+        const radian = Math.PI / 180;
+        const radius = 20;
+        const spacing = 80;
+
+        for (let i = 1; i <= size; i++) {
+          for (let j = 1; j <= size; j++) {
+            const filled = dots[`${j} ${i}`];
+
+            ctx.fillStyle = filled
+              ? 'rgba(180, 170, 110, 0.5)'
+              : 'rgba(255, 255, 255, 0.5)';
+
+            // draw circles
+            ctx.beginPath();
+            ctx.arc(
+              i * spacing,
+              j * spacing,
+              radius,
+              0 * radian,
+              360 * radian,
+              false
+            );
+            ctx.fill();
+            ctx.stroke();
+
+            // draw lines
+            if (i !== size) {
+              ctx.beginPath();
+              ctx.moveTo(i * spacing + radius, j * spacing);
+              ctx.lineTo(
+                i * spacing + radius + (spacing - radius * 2),
+                j * spacing
+              );
+              ctx.stroke();
+            }
+            if (j !== size) {
+              ctx.beginPath();
+              ctx.moveTo(i * spacing, j * spacing + radius);
+              ctx.lineTo(
+                i * spacing,
+                j * spacing + radius + (spacing - radius * 2)
+              );
+              ctx.stroke();
+            }
+
+            // draw text
+            ctx.font = '10px Verdana';
+            ctx.fillStyle = 'black';
+            ctx.fillText(`${j}:${i}`, i * spacing - 10, j * spacing + 5);
+            if (filled) {
+              ctx.fillText(
+                `${filled.text}`,
+                i * spacing - spacing / 2,
+                j * spacing - radius
+              );
+            }
+          }
+        }
+      }
+
+      window.onload = function () {
+        const example = document.getElementById('example');
+        const pattern = document.getElementById('pattern');
+        const ctxE = example.getContext('2d');
+        const ctxP = pattern.getContext('2d');
+        example.width = 400;
+        example.height = 500;
+        pattern.width = 750;
+        pattern.height = 750;
+
+        drawGraph(ctxE);
+        drawPattern(ctxP);
+      };
+    </script>
+  </body>
+</html>
