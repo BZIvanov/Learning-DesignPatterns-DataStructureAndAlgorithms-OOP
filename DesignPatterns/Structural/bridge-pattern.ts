@@ -22,7 +22,7 @@ class User {
   name: string;
   private paymentProcessor: IPaymentProcessor;
 
-  constructor(name, paymentProcessor: IPaymentProcessor) {
+  constructor(name: string, paymentProcessor: IPaymentProcessor) {
     this.name = name;
     this.paymentProcessor = paymentProcessor;
   }
