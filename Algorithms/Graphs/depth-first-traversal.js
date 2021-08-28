@@ -7,6 +7,7 @@ const directedGraph = {
   f: ['d'],
 };
 
+// itterative solution
 const depthFirstTraversal = (graph, startNode) => {
   const stack = [startNode];
 
@@ -25,9 +26,9 @@ const depthFirstTraversal = (graph, startNode) => {
     console.log(text);
   }
 };
-
 depthFirstTraversal(directedGraph, 'a');
 
+// recursive solution
 const depthFirstTraversalRecursive = (graph, startNode) => {
   console.log('Recursive', startNode);
 
@@ -35,5 +36,4 @@ const depthFirstTraversalRecursive = (graph, startNode) => {
     depthFirstTraversalRecursive(graph, neighbor);
   }
 };
-
 depthFirstTraversalRecursive(directedGraph, 'a');
