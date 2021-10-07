@@ -5,23 +5,23 @@ const APP = {};
   const userNames = [];
 
   namespace.greeting = function (userName) {
-    const prompt = 'Welcome,';
-    const prompt2 = 'Glad to have you!';
-    const prompt3 = 'Good to see you again.';
+    const welcomeText = 'Welcome,';
+    const textNewUser = 'Glad to have you!';
+    const textExistingUser = 'Good to see you again.';
 
-    let greeting = prompt + ' ';
+    let greeting = welcomeText + ' ';
     if (newUser(userName)) {
-      greeting += prompt2;
+      greeting += textNewUser;
     } else {
-      greeting += prompt3;
+      greeting += textExistingUser;
     }
     console.log(greeting);
     counter++;
   };
 
   const newUser = function (userName) {
-    for (let i = 0; i < userNames.length; i++) {
-      if (userNames[i].toLowerCase() === userName.toLowerCase()) {
+    for (const name of userNames) {
+      if (name.toLowerCase() === userName.toLowerCase()) {
         return false;
       }
     }
