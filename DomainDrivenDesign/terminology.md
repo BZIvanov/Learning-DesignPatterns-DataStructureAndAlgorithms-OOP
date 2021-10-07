@@ -7,3 +7,5 @@
 - **bus** - bus is a shared component, that facilitates communication between components
 
 - **saga** - instance of a state machine, that represents an ongoing, possibly long running operation
+
+- **repository** - in DDD repository is a class that handles persistence on behalf of entities and ideally agregate roots
