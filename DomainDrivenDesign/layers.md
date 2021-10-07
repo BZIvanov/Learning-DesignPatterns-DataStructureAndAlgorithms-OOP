@@ -9,4 +9,6 @@
 
 - Domain layer - our models and services.
 
+  - domain services - implement the domain logic that doesn't belong to specific aggregate and most likely span over multiple entities
+
 - Infrastructure layer - our database, but not only. Also security, logging, inversion of control, caching, networking, repositories.
