@@ -11,6 +11,22 @@ CQRS is targeting separating the commands and queries.
 
 ---
 
+## CQRS types
+
+#### One Database CQRS
+
+<img src="./pics/one-db-cqrs.png" />
+
+#### Two Databases CQRS
+
+<img src="./pics/two-db-cqrs.png" />
+
+#### Event sourcing CQRS
+
+<img src="./pics/event-sourcing-cqrs.png" />
+
+---
+
 ## CQRS vs DDD architecture
 
 <img src="./pics/cqrs-arch.png" />
