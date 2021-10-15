@@ -1,5 +1,9 @@
 ## Clean Architecture
 
+Architecture thats is designed for the inhabitants of the architecture, not the architect or the machine.
+
+#### Layers
+
 1. Entities - the center of the architecture.
 2. Use cases - around the center.
 3. Controllers, Gateways, Presenters - around use cases.
