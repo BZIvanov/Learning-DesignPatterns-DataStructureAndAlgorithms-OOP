@@ -2,6 +2,8 @@
 
 Specific responsibility enforced by an explicit boundary.
 
+Bounded context help us with deciding of how to split our domains in defferent microservices, because it is often not clear where to put boundaries.
+
 ### Bounded context structure
 
 - each bounded context has its own ubiquitous language
