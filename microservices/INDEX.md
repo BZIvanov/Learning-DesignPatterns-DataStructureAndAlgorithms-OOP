@@ -1,5 +1,7 @@
 ## Microservices
 
+With microservices our application is split into smaller pieces where each piece has it's own logic and database. It is important to know that the microservices don't exchange data between using requests. This is important because we want our services to be independent from one another.
+
 #### Data consistency
 
 - Two phase commit
