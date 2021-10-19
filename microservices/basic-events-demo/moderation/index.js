@@ -14,11 +14,11 @@ app.post('/events', async (req, res) => {
 
     await axios.post('http://localhost:5005/events', {
       type: 'CommentModerated',
-      data: { id: data.id, postId: data.postId, status, content: data.content },
+      data: { ...data, status },
     });
   }
 
-  res.status(201).json({ success: true });
+  res.status(200).json({ success: true });
 });
 
 const PORT = process.env.PORT || 5003;
