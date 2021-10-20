@@ -16,8 +16,11 @@ app.post('/events', async (req, res) => {
       type: 'CommentModerated',
       data: { ...data, status },
     });
+
+    console.log('MODERATION processed', type);
   }
 
+  console.log('MODERATION', type);
   res.status(200).json({ success: true });
 });
 
