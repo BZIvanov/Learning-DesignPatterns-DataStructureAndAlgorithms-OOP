@@ -16,11 +16,11 @@ const ListPosts = () => {
   return (
     <>
       {Object.values(posts).map((post) => (
-        <div key={post.id}>
+        <div key={post._id}>
           <div>
             <h3>{post.title}</h3>
             <ListComments comments={post.comments} />
-            <CreateComment postId={post.id} />
+            <CreateComment postId={post._id} />
           </div>
         </div>
       ))}
