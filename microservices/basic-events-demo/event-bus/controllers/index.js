@@ -5,6 +5,7 @@ exports.getEvents = async (req, res) => {
   try {
     const events = await Event.find();
 
+    console.log('EVENT BUS: Get all events');
     res.status(200).json(events);
   } catch (error) {
     console.log(error);
@@ -22,6 +23,7 @@ exports.createEvent = async (req, res) => {
     axios.post('http://localhost:5002/events', event);
     axios.post('http://localhost:5003/events', event);
 
+    console.log('EVENT BUS: Event', event.type);
     res.status(201).json({ success: true });
   } catch (error) {
     console.log(error);
