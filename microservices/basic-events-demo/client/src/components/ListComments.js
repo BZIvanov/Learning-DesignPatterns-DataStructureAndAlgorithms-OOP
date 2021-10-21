@@ -1,4 +1,4 @@
-const ListComments = ({ comments }) => {
+const ListComments = ({ comments = [] }) => {
   return (
     <ul>
       {comments.map((comment) => {
