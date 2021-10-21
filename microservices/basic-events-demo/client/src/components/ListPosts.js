@@ -4,7 +4,7 @@ import CreateComment from './CreateComment';
 import ListComments from './ListComments';
 
 const ListPosts = () => {
-  const [posts, setPosts] = useState({});
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     (async () => {
@@ -15,7 +15,7 @@ const ListPosts = () => {
 
   return (
     <>
-      {Object.values(posts).map((post) => (
+      {posts.map((post) => (
         <div key={post._id}>
           <div>
             <h3>{post.title}</h3>
