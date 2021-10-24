@@ -4,9 +4,18 @@ With microservices our application is split into smaller pieces where each piece
 
 #### Data consistency
 
-- Two phase commit
-- Saga pattern
-- Eventual consistency - suitable for long running tasks (seconds) where the data will be inconsistent while the long running task is finished, but is good for performance, because we will run the tasks in background
+- **Two phase commit** - The first phase is the _prepare_ phase, where every service is preparing the transaction. The second phase is the _voting_ phase where every service has to vote with _yes_ in order the entire transaction to be commited. If _no_ vote is received from one of the services, the transaction manager will ask all the services to rollback the transaction.
+- **Saga pattern** - with saga, the transaction is splitted into multiple requests and the saga tracks those requests.
+- **Eventual consistency** - suitable for long running tasks (seconds) where the data will be inconsistent while the long running task is finished, but is good for performance, because we will run the tasks in background
+
+#### Centralized access to microservices
+
+This can be achieved by using API Gateway.
+
+The benefits of using API gateway are multiple, some of them are:
+
+- we don't need to keep credentials for all the services
+- we can easily implement versioning
 
 #### Resilient microservices architecture
 
