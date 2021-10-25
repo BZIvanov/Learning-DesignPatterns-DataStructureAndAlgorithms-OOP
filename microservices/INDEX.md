@@ -21,8 +21,8 @@ The benefits of using API gateway are multiple, some of them are:
 
 We can achieve resilience by using the following patterns:
 
-- timeouts design pattern
-- circuit breaker design pattern
+- timeouts design pattern - after some time of waiting, timeout exception is thrown
+- circuit breaker design pattern - it is based on an object which wraps calls. This pattern monitors for failures.
 - retry design pattern
 - bulkheads design pattern
 
