@@ -30,6 +30,12 @@ We can achieve resilience by using the following patterns:
 
 A microservice can have one or multiple contracts. If it is RESTful contract it will include the resource url, the http verb and data in json format for example. Contract is something like documentation of how we can interact with the microservice.
 
+#### Centralized logging
+
+When implementing microservices what we usually want is to have centralized logging system across all services so we can easily track what is happening with our services.
+
+Common logging levels are info, error and debug.
+
 #### Cloud based approaches for microservices
 
 - IAAS - infrastructure as a service.
