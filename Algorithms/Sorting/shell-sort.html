@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      td {
+        padding: 3px 7px;
+      }
+      .h {
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+      .pb {
+        border-bottom: 1px solid black;
+      }
+      .pr {
+        border-right: 1px solid black;
+      }
+      .t {
+        font-size: 0.9rem;
+      }
+      .blue {
+        color: blue;
+      }
+      .grey {
+        color: darkgray;
+      }
+      .red {
+        color: red;
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <title>Shell Sort</title>
+    <script src="./shell-sort.js" defer></script>
+  </head>
+  <body>
+    <div>
+      <h3>About</h3>
+      <p>TODO</p>
+    </div>
+    <div>
+      <h3>Visualization of the algorithm</h3>
+      <table>
+        <tbody>
+          <tr>
+            <td class="h">g</td>
+            <td class="h">i</td>
+            <td class="h">0</td>
+            <td class="h">1</td>
+            <td class="h">2</td>
+            <td class="h">3</td>
+            <td class="h">4</td>
+            <td class="h">5</td>
+            <td class="h">6</td>
+            <td class="t">here are the indexes of the array</td>
+          </tr>
+          <tr>
+            <td class="h"></td>
+            <td class="h"></td>
+            <td class="h pb">2</td>
+            <td class="h pb">57</td>
+            <td class="h pb">32</td>
+            <td class="h pb">-12</td>
+            <td class="h pb">88</td>
+            <td class="h pb">1</td>
+            <td class="h pb">-25.22</td>
+            <td class="t">initial array, gaps are [701, 10, 54, 2, 1]</td>
+          </tr>
+          <tr>
+            <td class="h">701</td>
+            <td class="h pr"></td>
+            <td class="grey">2</td>
+            <td class="grey">57</td>
+            <td class="grey">32</td>
+            <td class="grey">-12</td>
+            <td class="grey">88</td>
+            <td class="grey">1</td>
+            <td class="grey">-25.22</td>
+            <td class="t">
+              for gap 701 we will do nothing, because the conditions are not met
+            </td>
+          </tr>
+          <tr>
+            <td class="h">10</td>
+            <td class="h pr"></td>
+            <td class="grey">2</td>
+            <td class="grey">57</td>
+            <td class="grey">32</td>
+            <td class="grey">-12</td>
+            <td class="grey">88</td>
+            <td class="grey">1</td>
+            <td class="grey">-25.22</td>
+            <td class="t">
+              for gap 10 we will do nothing, because the conditions are not met
+            </td>
+          </tr>
+          <tr>
+            <td class="h">54</td>
+            <td class="h pr"></td>
+            <td class="grey">2</td>
+            <td class="grey">57</td>
+            <td class="grey">32</td>
+            <td class="grey">-12</td>
+            <td class="grey">88</td>
+            <td class="grey">1</td>
+            <td class="grey">-25.22</td>
+            <td class="t">
+              for gap 54 we will do nothing, because the conditions are not met
+            </td>
+          </tr>
+          <tr>
+            <td class="h">2</td>
+            <td class="h pr">2</td>
+            <td class="grey">2</td>
+            <td class="grey">57</td>
+            <td class="grey">32</td>
+            <td class="grey">-12</td>
+            <td class="grey">88</td>
+            <td class="grey">1</td>
+            <td class="grey">-25.22</td>
+            <td class="t">no changes here</td>
+          </tr>
+          <tr>
+            <td class="h">2</td>
+            <td class="h pr">3</td>
+            <td class="grey">2</td>
+            <td class="red">-12</td>
+            <td class="grey">32</td>
+            <td class="blue">57</td>
+            <td class="grey">88</td>
+            <td class="grey">1</td>
+            <td class="grey">-25.22</td>
+            <td class="t">sorted</td>
+          </tr>
+          <tr>
+            <td class="h">2</td>
+            <td class="h pr">4</td>
+            <td class="grey">2</td>
+            <td class="grey">-12</td>
+            <td class="grey">32</td>
+            <td class="grey">57</td>
+            <td class="grey">88</td>
+            <td class="grey">1</td>
+            <td class="grey">-25.22</td>
+            <td class="t">no changes here</td>
+          </tr>
+          <tr>
+            <td class="h">2</td>
+            <td class="h pr">5</td>
+            <td class="grey">2</td>
+            <td class="grey">-12</td>
+            <td class="grey">32</td>
+            <td class="red">1</td>
+            <td class="grey">88</td>
+            <td class="blue">57</td>
+            <td class="grey">-25.22</td>
+            <td class="t">sorted</td>
+          </tr>
+          <tr>
+            <td class="h">2</td>
+            <td class="h pr">6</td>
+            <td class="red">-25.22</td>
+            <td class="grey">-12</td>
+            <td class="blue">2</td>
+            <td class="grey">1</td>
+            <td class="blue">32</td>
+            <td class="grey">57</td>
+            <td class="blue">88</td>
+            <td class="t">sorted</td>
+          </tr>
+          <tr>
+            <td class="h">1</td>
+            <td class="h pr">1</td>
+            <td class="grey">-25.22</td>
+            <td class="grey">-12</td>
+            <td class="grey">2</td>
+            <td class="grey">1</td>
+            <td class="grey">32</td>
+            <td class="grey">57</td>
+            <td class="grey">88</td>
+            <td class="t">no changes</td>
+          </tr>
+          <tr>
+            <td class="h">1</td>
+            <td class="h pr">2</td>
+            <td class="grey">-25.22</td>
+            <td class="grey">-12</td>
+            <td class="grey">2</td>
+            <td class="grey">1</td>
+            <td class="grey">32</td>
+            <td class="grey">57</td>
+            <td class="grey">88</td>
+            <td class="t">no changes</td>
+          </tr>
+          <tr>
+            <td class="h">1</td>
+            <td class="h pr">3</td>
+            <td class="grey">-25.22</td>
+            <td class="grey">-12</td>
+            <td class="red">1</td>
+            <td class="blue">2</td>
+            <td class="grey">32</td>
+            <td class="grey">57</td>
+            <td class="grey">88</td>
+            <td class="t">sorted</td>
+          </tr>
+          <tr>
+            <td class="h">1</td>
+            <td class="h pr">4</td>
+            <td class="grey">-25.22</td>
+            <td class="grey">-12</td>
+            <td class="grey">1</td>
+            <td class="grey">2</td>
+            <td class="grey">32</td>
+            <td class="grey">57</td>
+            <td class="grey">88</td>
+            <td class="t">no changes</td>
+          </tr>
+          <tr>
+            <td class="h">1</td>
+            <td class="h pr">5</td>
+            <td class="grey">-25.22</td>
+            <td class="grey">-12</td>
+            <td class="grey">1</td>
+            <td class="grey">2</td>
+            <td class="grey">32</td>
+            <td class="grey">57</td>
+            <td class="grey">88</td>
+            <td class="t">no changes</td>
+          </tr>
+          <tr>
+            <td class="h">1</td>
+            <td class="h pr">6</td>
+            <td class="grey">-25.22</td>
+            <td class="grey">-12</td>
+            <td class="grey">1</td>
+            <td class="grey">2</td>
+            <td class="grey">32</td>
+            <td class="grey">57</td>
+            <td class="grey">88</td>
+            <td class="t">no changes</td>
+          </tr>
+          <tr>
+            <td colspan="7" class="blue t">
+              entries in blue move to the right
+            </td>
+          </tr>
+          <tr>
+            <td colspan="7" class="red t">entries in blue move to the left</td>
+          </tr>
+          <tr>
+            <td colspan="7" class="grey t">
+              entries in grey are unchanged positions
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h3>Test /debug</h3>
+      <p>
+        To test it in the browser open the developer tools, go to the
+        <b>Sources</b> tab and debug the code.
+      </p>
+    </div>
+  </body>
+</html>
