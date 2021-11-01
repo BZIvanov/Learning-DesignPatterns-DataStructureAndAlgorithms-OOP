@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      td {
+        padding: 3px 7px;
+      }
+      .h {
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+      .pb {
+        border-bottom: 1px solid black;
+      }
+      .pr {
+        border-right: 1px solid black;
+      }
+      .t {
+        font-size: 0.9rem;
+      }
+      .blue {
+        color: blue;
+      }
+      .grey {
+        color: darkgray;
+      }
+      .red {
+        color: red;
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <title>Bubble Sort</title>
+    <script src="./bubble-sort.js" defer></script>
+  </head>
+  <body>
+    <div>
+      <h3>About</h3>
+      <p>Bubble sort</p>
+    </div>
+    <div>
+      <h3>Visualization of the algorithm</h3>
+      <table>
+        <tbody>
+          <tr>
+            <td class="h">i</td>
+            <td class="h">j</td>
+            <td class="h">0</td>
+            <td class="h">1</td>
+            <td class="h">2</td>
+            <td class="h">3</td>
+            <td class="h">4</td>
+            <td class="h">5</td>
+            <td class="h">6</td>
+            <td class="t">here are the indexes of the array</td>
+          </tr>
+          <tr>
+            <td class="h"></td>
+            <td class="h"></td>
+            <td class="h pb">2</td>
+            <td class="h pb">8</td>
+            <td class="h pb">11</td>
+            <td class="h pb">-23</td>
+            <td class="h pb">45.2</td>
+            <td class="h pb">9</td>
+            <td class="h pb">3</td>
+            <td class="t">initial array</td>
+          </tr>
+          <tr>
+            <td class="h">0</td>
+            <td class="h pr">2</td>
+            <td class="grey">2</td>
+            <td class="grey">8</td>
+            <td class="red">-23</td>
+            <td class="blue">11</td>
+            <td class="grey">45.2</td>
+            <td class="grey">9</td>
+            <td class="grey">3</td>
+            <td class="t"></td>
+          </tr>
+          <tr>
+            <td class="h">0</td>
+            <td class="h pr">4</td>
+            <td class="grey">2</td>
+            <td class="grey">8</td>
+            <td class="grey">-23</td>
+            <td class="grey">11</td>
+            <td class="red">9</td>
+            <td class="blue">45.2</td>
+            <td class="grey">3</td>
+            <td class="t"></td>
+          </tr>
+          <tr>
+            <td class="h">0</td>
+            <td class="h pr">5</td>
+            <td class="grey">2</td>
+            <td class="grey">8</td>
+            <td class="grey">-23</td>
+            <td class="grey">11</td>
+            <td class="grey">9</td>
+            <td class="red">3</td>
+            <td class="blue">45.2</td>
+            <td class="t"></td>
+          </tr>
+          <tr>
+            <td class="h">1</td>
+            <td class="h pr">1</td>
+            <td class="grey">2</td>
+            <td class="red">-23</td>
+            <td class="blue">8</td>
+            <td class="grey">11</td>
+            <td class="grey">9</td>
+            <td class="grey">3</td>
+            <td class="grey">45.2</td>
+            <td class="t"></td>
+          </tr>
+          <tr>
+            <td class="h">1</td>
+            <td class="h pr">3</td>
+            <td class="grey">2</td>
+            <td class="grey">-23</td>
+            <td class="grey">8</td>
+            <td class="red">9</td>
+            <td class="blue">11</td>
+            <td class="grey">3</td>
+            <td class="grey">45.2</td>
+            <td class="t"></td>
+          </tr>
+          <tr>
+            <td class="h">1</td>
+            <td class="h pr">4</td>
+            <td class="grey">2</td>
+            <td class="grey">-23</td>
+            <td class="grey">8</td>
+            <td class="grey">9</td>
+            <td class="red">3</td>
+            <td class="blue">11</td>
+            <td class="grey">45.2</td>
+            <td class="t"></td>
+          </tr>
+          <tr>
+            <td class="h">2</td>
+            <td class="h pr">0</td>
+            <td class="red">-23</td>
+            <td class="blue">2</td>
+            <td class="grey">8</td>
+            <td class="grey">9</td>
+            <td class="grey">3</td>
+            <td class="grey">11</td>
+            <td class="grey">45.2</td>
+            <td class="t"></td>
+          </tr>
+          <tr>
+            <td class="h">2</td>
+            <td class="h pr">3</td>
+            <td class="grey">-23</td>
+            <td class="grey">2</td>
+            <td class="grey">8</td>
+            <td class="red">3</td>
+            <td class="blue">9</td>
+            <td class="grey">11</td>
+            <td class="grey">45.2</td>
+            <td class="t"></td>
+          </tr>
+          <tr>
+            <td class="h">3</td>
+            <td class="h pr">2</td>
+            <td class="grey">-23</td>
+            <td class="grey">2</td>
+            <td class="red">3</td>
+            <td class="blue">8</td>
+            <td class="grey">9</td>
+            <td class="grey">11</td>
+            <td class="grey">45.2</td>
+            <td class="t"></td>
+          </tr>
+          <tr>
+            <td colspan="7" class="blue t">
+              entries in blue move to the right
+            </td>
+          </tr>
+          <tr>
+            <td colspan="7" class="red t">entries in red move to the left</td>
+          </tr>
+          <tr>
+            <td colspan="7" class="grey t">
+              entries in grey are unchanged positions
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h3>Test /debug</h3>
+      <p>
+        To test it in the browser open the developer tools, go to the
+        <b>Sources</b> tab and debug the code.
+      </p>
+    </div>
+  </body>
+</html>
