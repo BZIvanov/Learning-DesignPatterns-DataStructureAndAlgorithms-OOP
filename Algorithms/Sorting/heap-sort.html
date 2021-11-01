@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      td {
+        padding: 3px 7px;
+      }
+      .h {
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+      .pb {
+        border-bottom: 1px solid black;
+      }
+      .pr {
+        border-right: 1px solid black;
+      }
+      .t {
+        font-size: 0.9rem;
+      }
+      .blue {
+        color: blue;
+      }
+      .grey {
+        color: darkgray;
+      }
+      .red {
+        color: red;
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <title>Heap Sort</title>
+    <script src="./heap-sort.js" defer></script>
+  </head>
+  <body>
+    <div>
+      <h3>About</h3>
+      <p>Heap sort</p>
+      <p>Heap is basically ordered binary tree.</p>
+    </div>
+    <div>
+      <h3>Visualization of the algorithm</h3>
+      <table>
+        <tbody>
+          <tr>
+            <td class="h">type</td>
+            <td class="h">0</td>
+            <td class="h">1</td>
+            <td class="h">2</td>
+            <td class="h">3</td>
+            <td class="h">4</td>
+            <td class="h">5</td>
+            <td class="h">6</td>
+            <td class="t">here are the indexes of the array</td>
+          </tr>
+          <tr>
+            <td class="h"></td>
+            <td class="h pb">2</td>
+            <td class="h pb">8</td>
+            <td class="h pb">5</td>
+            <td class="h pb">3</td>
+            <td class="h pb">9</td>
+            <td class="h pb">1</td>
+            <td class="h pb">4</td>
+            <td class="t">initial array</td>
+          </tr>
+          <tr>
+            <td class="h pr">last parent</td>
+            <td class="grey">2</td>
+            <td class="grey">9</td>
+            <td class="grey">5</td>
+            <td class="grey">3</td>
+            <td class="grey">8</td>
+            <td class="grey">1</td>
+            <td class="grey">4</td>
+            <td class="t"></td>
+          </tr>
+          <tr>
+            <td class="h pr">last parent</td>
+            <td class="grey">9</td>
+            <td class="grey">8</td>
+            <td class="grey">5</td>
+            <td class="grey">3</td>
+            <td class="grey">2</td>
+            <td class="grey">1</td>
+            <td class="grey">4</td>
+            <td class="t"></td>
+          </tr>
+          <tr>
+            <td class="h pr">last parent</td>
+            <td class="grey">8</td>
+            <td class="grey">4</td>
+            <td class="grey">5</td>
+            <td class="grey">3</td>
+            <td class="grey">2</td>
+            <td class="grey">1</td>
+            <td class="grey">9</td>
+            <td class="t"></td>
+          </tr>
+          <tr>
+            <td class="h pr">last node</td>
+            <td class="grey">5</td>
+            <td class="grey">4</td>
+            <td class="grey">1</td>
+            <td class="grey">3</td>
+            <td class="grey">2</td>
+            <td class="grey">8</td>
+            <td class="grey">9</td>
+            <td class="t"></td>
+          </tr>
+          <tr>
+            <td class="h pr">last node</td>
+            <td class="grey">4</td>
+            <td class="grey">3</td>
+            <td class="grey">1</td>
+            <td class="grey">2</td>
+            <td class="grey">5</td>
+            <td class="grey">8</td>
+            <td class="grey">9</td>
+            <td class="t"></td>
+          </tr>
+          <tr>
+            <td class="h pr">last node</td>
+            <td class="grey">3</td>
+            <td class="grey">2</td>
+            <td class="grey">1</td>
+            <td class="grey">4</td>
+            <td class="grey">5</td>
+            <td class="grey">8</td>
+            <td class="grey">9</td>
+            <td class="t"></td>
+          </tr>
+          <tr>
+            <td class="h pr">last node</td>
+            <td class="grey">2</td>
+            <td class="grey">1</td>
+            <td class="grey">3</td>
+            <td class="grey">4</td>
+            <td class="grey">5</td>
+            <td class="grey">8</td>
+            <td class="grey">9</td>
+            <td class="t"></td>
+          </tr>
+          <tr>
+            <td class="h pr">last node</td>
+            <td class="grey">1</td>
+            <td class="grey">2</td>
+            <td class="grey">3</td>
+            <td class="grey">4</td>
+            <td class="grey">5</td>
+            <td class="grey">8</td>
+            <td class="grey">9</td>
+            <td class="t"></td>
+          </tr>
+          <tr>
+            <td colspan="9" class="blue t">---</td>
+          </tr>
+          <tr>
+            <td colspan="9" class="red t">---</td>
+          </tr>
+          <tr>
+            <td colspan="9" class="grey t">---</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h3>Test /debug</h3>
+      <p>
+        To test it in the browser open the developer tools, go to the
+        <b>Sources</b> tab and debug the code.
+      </p>
+    </div>
+  </body>
+</html>
