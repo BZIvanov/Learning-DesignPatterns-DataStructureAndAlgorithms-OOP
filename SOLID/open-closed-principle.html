@@ -9,21 +9,26 @@
     <div>
       <h4>Definition</h4>
       <p>
-        The open–closed principle states "software entities (classes, modules,
-        functions, etc.) should be open for extension, but closed for
+        The open&minus;closed principle states "software entities (classes,
+        modules, functions, etc.) should be open for extension, but closed for
         modification", an entity can allow its behaviour to be extended without
         modifying its source code.
       </p>
       <p>
         This principle is usually achieved by using interfaces and abstract
-        classes
+        classes.
+      </p>
+      <p>
+        Adding additional cases to a switch or methods to a class is bad,
+        because that class might be a part of tests or inheritance, that is why
+        modifying it is bad.
       </p>
     </div>
     <div>
       <dl>
         <dt>Open to extension</dt>
         <dd>new behavior can be added in the future</dd>
-        <dt>closed to modification</dt>
+        <dt>Closed to modification</dt>
         <dd>changes to source code are not required</dd>
       </dl>
     </div>

@@ -14,7 +14,7 @@ interface IVehicle {
 }
 
 // --- THE RIGHT WAY ---
-// now whoeve is implementing small interface will need everything coming with the interface
+// now whoever is implementing small interface will need everything coming with the interface
 interface IVehicle {
   getSpeed(): number;
   getModel(): string;
