@@ -1,6 +1,6 @@
 // --- THE WRONG WAY ---
 // below example is bad, because there is more than one potential change in the future
-// we might need to change the createExpenses logic or the notifyBudgetExceed function which notifies the user
+// we might need to change the createExpenses logic or the notifyBudgetExceed logic
 class BudgetTrackerU {
   constructor() {
     this.expenses = 0;
