@@ -1,7 +1,7 @@
 const personPrototype = {
   city: 'Sofia',
   getFullName() {
-    return `${this.name} ${this.lastName}`;
+    return `${this.firstName} ${this.lastName}`;
   },
 };
 
@@ -19,3 +19,6 @@ const person = Object.create(personPrototype, {
 });
 
 console.log(person);
+console.log(person.firstName);
+console.log(person.city);
+console.log(person.getFullName());
