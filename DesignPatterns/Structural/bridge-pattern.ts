@@ -1,3 +1,41 @@
+// Example 1
+interface IPlatform {
+  build(app: string): void;
+}
+
+class IOS {
+  build(app: string) {
+    console.log(`${app} build completed`);
+  }
+}
+
+class Android {
+  build(app: string) {
+    console.log(`${app} build completed`);
+  }
+}
+
+class ReactNative {
+  name: string;
+  private type: IPlatform;
+
+  constructor(name: string, type: IPlatform) {
+    this.name = name;
+    this.type = type;
+  }
+
+  build(platform: string) {
+    console.log(`Building ${this.name}`);
+    this.type.build(platform);
+  }
+}
+
+const androidApp = new ReactNative('My App', new Android());
+androidApp.build('Android App');
+
+console.log('-------------------');
+
+// Example 2
 interface IPaymentProcessor {
   processPayment(payment: string): void;
 }
