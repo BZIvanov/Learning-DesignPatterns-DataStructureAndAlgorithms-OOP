@@ -42,3 +42,11 @@ Common logging levels are info, error and debug.
 - PAAS - platform as a service.
 - SAAS - software as a service.
 - Hybrid approach
+
+#### Communication types
+
+- Synchronous communication
+- Asynchronous communication
+  - achieved by using Message Queue (MQ)
+  - it uses AMQP (Advanced Message Queuing Protocol) with message brokers like Kafka and RabbitMQ
+  - communication could be one-to-one or one-to-many
